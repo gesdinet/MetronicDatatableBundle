@@ -1,0 +1,7 @@
+services:
+
+    datatables:
+        class: Gesdinet\MetronicDataTableBundle\DataTables
+        arguments: [ '@logger', '@validator' ]
+
+    Gesdinet\MetronicDataTableBundle\DataTablesInterface: '@datatables'
