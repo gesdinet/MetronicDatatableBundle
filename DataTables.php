@@ -47,7 +47,7 @@ class DataTables implements DataTablesInterface
      */
     public function addService(DataTableHandlerInterface $service, string $id = null)
     {
-        $service_id = $id ?? $service::ID;
+        $service_id = $id ?? $service::getServiceId();
 
         if (null !== $service_id) {
             $this->services[$service_id] = $service;
