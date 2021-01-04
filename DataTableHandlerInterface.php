@@ -16,7 +16,6 @@ namespace Gesdinet\MetronicDataTableBundle;
  */
 interface DataTableHandlerInterface
 {
-    const ID = null;
 
     /**
      * Handles specified DataTable request.
@@ -28,4 +27,9 @@ interface DataTableHandlerInterface
      * @return DataTableResults
      */
     public function handle(DataTableQuery $request): DataTableResults;
+    
+    /**
+     * @return string
+     */
+    public static function getServiceId(): string;
 }
