@@ -29,9 +29,6 @@ class DataTables implements DataTablesInterface
 
     /**
      * Dependency Injection constructor.
-     *
-     * @param LoggerInterface    $logger
-     * @param ValidatorInterface $validator
      */
     public function __construct(LoggerInterface $logger, ValidatorInterface $validator)
     {
@@ -49,9 +46,7 @@ class DataTables implements DataTablesInterface
     {
         $service_id = $id ?? $service::getServiceId();
 
-        if (null !== $service_id) {
-            $this->services[$service_id] = $service;
-        }
+        $this->services[$service_id] = $service;
     }
 
     /**
@@ -88,7 +83,7 @@ class DataTables implements DataTablesInterface
         // Validate sent parameters.
         $violations = $this->validator->validate($params);
 
-        if (count($violations)) {
+        if (is_countable($violations) ? count($violations) : 0) {
             $message = $violations->get(0)->getMessage();
             $this->logger->error($message, ['request']);
 
@@ -124,7 +119,7 @@ class DataTables implements DataTablesInterface
         // Validate results returned from handler.
         $violations = $this->validator->validate($result);
 
-        if (count($violations)) {
+        if (is_countable($violations) ? count($violations) : 0) {
             $message = $violations->get(0)->getMessage();
             $this->logger->error($message, ['response']);
 

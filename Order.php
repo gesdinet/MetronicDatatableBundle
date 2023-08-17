@@ -21,9 +21,9 @@ namespace Gesdinet\MetronicDataTableBundle;
  */
 class Order extends ValueObject implements \JsonSerializable
 {
-    const ASC = 'asc';
+    final public const ASC = 'asc';
 
-    const DESC = 'desc';
+    final public const DESC = 'desc';
 
     protected $column;
 
@@ -31,9 +31,6 @@ class Order extends ValueObject implements \JsonSerializable
 
     /**
      * Initializing constructor.
-     *
-     * @param string $column
-     * @param string $dir
      */
     public function __construct(string $column, string $dir)
     {
@@ -44,7 +41,7 @@ class Order extends ValueObject implements \JsonSerializable
     /**
      * {@inheritdoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'column' => $this->column,

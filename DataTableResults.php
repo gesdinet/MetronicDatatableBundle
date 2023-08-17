@@ -77,10 +77,8 @@ class DataTableResults implements \JsonSerializable
 
     /**
      * Convert results into array as expected by DataTables plugin.
-     *
-     * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'meta' => [

@@ -40,7 +40,7 @@ class ValueObject
     public function __get(string $name)
     {
         if (!property_exists($this, $name)) {
-            throw new \BadMethodCallException(sprintf('Unknown property "%s" in class "%s".', $name, get_class($this)));
+            throw new \BadMethodCallException(sprintf('Unknown property "%s" in class "%s".', $name, static::class));
         }
 
         return $this->$name;
@@ -52,7 +52,7 @@ class ValueObject
      * @param string $name  name of the property
      * @param mixed  $value new value of the property
      */
-    final public function __set(string $name, $value)
+    final public function __set(string $name, mixed $value)
     {
     }
 }

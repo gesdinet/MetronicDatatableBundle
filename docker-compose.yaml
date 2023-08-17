@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+    php:
+        image: viterbit/app-web-8.1:latest
+        volumes:
+            - ./:/var/www/html
+        command: bash

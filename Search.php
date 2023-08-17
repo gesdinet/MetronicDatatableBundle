@@ -25,8 +25,6 @@ class Search extends ValueObject implements \JsonSerializable
 
     /**
      * Initializing constructor.
-     *
-     * @param string $value
      */
     public function __construct(string $value = null)
     {
@@ -36,7 +34,7 @@ class Search extends ValueObject implements \JsonSerializable
     /**
      * {@inheritdoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'value' => $this->value,

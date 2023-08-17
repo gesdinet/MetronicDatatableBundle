@@ -16,11 +16,11 @@ namespace Gesdinet\MetronicDataTableBundle;
  *
  * @see https://keenthemes.com/metronic/documentation.html#sec14
  *
- * @property int      $start      Index of first row to return, zero-based.
- * @property int      $length     Total number of rows to return (-1 to return all rows).
- * @property Search   $search     Global search value.
- * @property Order[]  $order      Columns ordering (zero-based column index and direction).
- * @property array    $customData Custom data from DataTables.
+ * @property int     $start      Index of first row to return, zero-based.
+ * @property int     $length     Total number of rows to return (-1 to return all rows).
+ * @property Search  $search     Global search value.
+ * @property Order[] $order      Columns ordering (zero-based column index and direction).
+ * @property array   $customData Custom data from DataTables.
  */
 class DataTableQuery extends ValueObject implements \JsonSerializable
 {
@@ -36,8 +36,6 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
 
     /**
      * Initializing constructor.
-     *
-     * @param Parameters $params
      */
     public function __construct(Parameters $params)
     {
@@ -46,12 +44,10 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
 
         $this->search = new Search($params->search);
 
-        $this->order = array_map(function (array $order) {
-            return new Order(
-                $order['field'],
-                $order['sort']
-            );
-        }, $params->order);
+        $this->order = array_map(fn (array $order) => new Order(
+            $order['field'],
+            $order['sort']
+        ), $params->order);
 
         $this->customData = $params->customData;
     }
@@ -59,11 +55,9 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
     /**
      * {@inheritdoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
-        $callback = function (\JsonSerializable $item) {
-            return $item->jsonSerialize();
-        };
+        $callback = fn (\JsonSerializable $item) => $item->jsonSerialize();
 
         return [
             'start' => $this->start,
