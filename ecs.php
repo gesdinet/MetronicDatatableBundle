@@ -9,6 +9,7 @@
  * file that was distributed with this source code.
  */
 
+use PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\ForbiddenFunctionsSniff;
 use PhpCsFixer\Fixer\Alias\NoMixedEchoPrintFixer;
 use PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
 use PhpCsFixer\Fixer\ArrayNotation\NoMultilineWhitespaceAroundDoubleArrowFixer;
@@ -231,4 +232,13 @@ file that was distributed with this source code.';
     $ecsConfig->rule(VisibilityRequiredFixer::class);
     $ecsConfig->rule(WhitespaceAfterCommaInArrayFixer::class);
     $ecsConfig->rule(YodaStyleFixer::class);
+    $ecsConfig->ruleWithConfiguration(ForbiddenFunctionsSniff::class, [
+        'forbiddenFunctions' => [
+            'dump' => null,
+            'dd' => null,
+            'error_log' => null,
+            'print_r' => null,
+            'var_dump' => null,
+        ],
+    ]);
 };

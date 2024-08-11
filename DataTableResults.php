@@ -30,30 +30,35 @@ class DataTableResults implements \JsonSerializable
 {
     /**
      * @Assert\NotNull
+     *
      * @Assert\GreaterThanOrEqual(value="0")
      */
     public $page = 0;
 
     /**
      * @Assert\NotNull
+     *
      * @Assert\GreaterThanOrEqual(value="0")
      */
     public $pages = 0;
 
     /**
      * @Assert\NotNull
+     *
      * @Assert\GreaterThanOrEqual(value="0")
      */
     public $perpage = 0;
 
     /**
      * @Assert\NotNull
+     *
      * @Assert\GreaterThanOrEqual(value="0")
      */
     public $total = 0;
 
     /**
      * @Assert\NotNull
+     *
      * @Assert\Choice(choices={"asc", "desc"}, strict=true)
      */
     public $sort = 'asc';
@@ -65,12 +70,14 @@ class DataTableResults implements \JsonSerializable
 
     /**
      * @Assert\NotNull
+     *
      * @Assert\Type(type="array")
      */
     public $data = [];
 
     /**
      * @Assert\NotNull
+     *
      * @Assert\Type(type="array")
      */
     public $totalDataRow = [];
