@@ -28,7 +28,7 @@ class GesdinetMetronicDataTableExtension extends Extension implements CompilerPa
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('datatables.yml');
@@ -37,7 +37,7 @@ class GesdinetMetronicDataTableExtension extends Extension implements CompilerPa
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->has('datatables')) {
             return;
