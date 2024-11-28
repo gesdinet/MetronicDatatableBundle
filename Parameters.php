@@ -28,32 +28,40 @@ class Parameters
 {
     /**
      * @Assert\NotNull
+     *
      * @Assert\GreaterThanOrEqual(value="0")
      */
     public $start = 0;
 
     /**
      * @Assert\NotNull
+     *
      * @Assert\GreaterThanOrEqual(value="-1")
      */
     public $length = -1;
 
     /**
      * @Assert\NotNull
+     *
      * @Assert\Length(max="100")
      */
     public $search = '';
 
     /**
      * @Assert\NotNull
+     *
      * @Assert\Type(type="array")
+     *
      * @Assert\All({
+     *
      *     @Assert\Collection(
      *         fields={
      *             "field" = {
+     *
      *                @Assert\Length(max="100")
      *             },
      *             "sort" = {
+     *
      *                 @Assert\Choice(choices={"asc", "desc"}, strict=true)
      *             }
      *         },
